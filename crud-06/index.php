@@ -27,9 +27,21 @@ set_exception_handler(function ($exception) {
     exit;
 });
 
+// Rutas públicas (no requieren autenticación)
+$publicRoutes = [
+    'Auth' => ['login']
+];
+
 // Obtener controlador y acción
-$controller = $_GET['controller'] ?? 'Producto';
-$action = $_GET['action'] ?? 'index';
+$controller = $_GET['controller'] ?? 'Auth';
+$action = $_GET['action'] ?? 'login';
+
+// Verificar autenticación
+$usuarioModel = new Usuario();
+if (!$usuarioModel->estaAutenticado() && !($publicRoutes[$controller] ?? false && in_array($action, $publicRoutes[$controller]))) {
+    header('Location: index.php?controller=Auth&action=login');
+    exit;
+}
 
 // Validar y crear instancia del controlador
 $controllerClass = $controller . 'Controller';

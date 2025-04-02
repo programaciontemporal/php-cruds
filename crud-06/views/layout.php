@@ -24,6 +24,24 @@
     .table-responsive {
         overflow-x: auto;
     }
+
+    .user-nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .user-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #4e5d6c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+    }
     </style>
 </head>
 
@@ -37,12 +55,35 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
+                        <?php if (isset($_SESSION['usuario'])): ?>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=Categoria&action=index">Categorías</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?controller=Producto&action=index">Productos</a>
                         </li>
+                        <?php endif; ?>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <?php if (isset($_SESSION['usuario'])): ?>
+                        <li class="nav-item">
+                            <div class="user-nav">
+                                <div class="user-avatar">
+                                    <?= strtoupper(substr($_SESSION['usuario']['nombre'], 0, 1)) ?>
+                                </div>
+                                <span class="text-light"><?= htmlspecialchars($_SESSION['usuario']['nombre']) ?></span>
+                                <a href="index.php?controller=Auth&action=logout" class="btn btn-sm btn-outline-light">
+                                    <i class="bi bi-box-arrow-right"></i> Salir
+                                </a>
+                            </div>
+                        </li>
+                        <?php else: ?>
+                        <li class="nav-item">
+                            <a href="index.php?controller=Auth&action=login" class="btn btn-outline-light">
+                                <i class="bi bi-box-arrow-in-right"></i> Ingresar
+                            </a>
+                        </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
