@@ -5,44 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Inventario</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/slate/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <style>
-    body {
-        padding-top: 20px;
-    }
-
-    .card {
-        margin-bottom: 20px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    .navbar-brand {
-        font-weight: bold;
-    }
-
-    .table-responsive {
-        overflow-x: auto;
-    }
-
-    .user-nav {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .user-avatar {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background-color: #4e5d6c;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: bold;
-    }
-    </style>
+    <!-- Bootstrap Theme y estilos propios -->
+    <link href="/cruds/crud-06/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/cruds/crud-06/assets/css/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/cruds/crud-06/assets/css/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -53,7 +19,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
                         <?php if (isset($_SESSION['usuario'])): ?>
                         <li class="nav-item">
@@ -64,27 +30,27 @@
                         </li>
                         <?php endif; ?>
                     </ul>
-                    <ul class="navbar-nav ms-auto">
-                        <?php if (isset($_SESSION['usuario'])): ?>
-                        <li class="nav-item">
-                            <div class="user-nav">
-                                <div class="user-avatar">
-                                    <?= strtoupper(substr($_SESSION['usuario']['nombre'], 0, 1)) ?>
-                                </div>
-                                <span class="text-light"><?= htmlspecialchars($_SESSION['usuario']['nombre']) ?></span>
-                                <a href="index.php?controller=Auth&action=logout" class="btn btn-sm btn-outline-light">
-                                    <i class="bi bi-box-arrow-right"></i> Salir
-                                </a>
-                            </div>
-                        </li>
-                        <?php else: ?>
-                        <li class="nav-item">
-                            <a href="index.php?controller=Auth&action=login" class="btn btn-outline-light">
-                                <i class="bi bi-box-arrow-in-right"></i> Ingresar
-                            </a>
-                        </li>
-                        <?php endif; ?>
-                    </ul>
+                    <?php if (isset($_SESSION['usuario'])): ?>
+                    <div class="d-flex align-items-center">
+                        <div class="me-3 text-white">
+                            <?= htmlspecialchars($_SESSION['usuario']['nombre']) ."&nbsp" ?>
+                        </div>
+                        <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center"
+                            style="width: 36px; height: 36px;">
+                            <span
+                                class="text-white"><?= strtoupper(substr($_SESSION['usuario']['nombre'], 0, 1)) ?></span>
+                        </div>
+                        <a href="index.php?controller=Auth&action=logout" class="btn btn-sm btn-outline-light ms-3">
+                            <i class="bi bi-box-arrow-right"></i> Salir
+                        </a>
+                    </div>
+                    <?php else: ?>
+                    <div class="d-flex">
+                        <a href="index.php?controller=Auth&action=login" class="btn btn-outline-light">
+                            <i class="bi bi-box-arrow-in-right"></i> Ingresar
+                        </a>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>

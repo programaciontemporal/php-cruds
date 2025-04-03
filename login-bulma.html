@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Bulma</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background-color: #272b30;
+            color: #c8c8c8;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            background-color: #32383e;
+            border: 1px solid #3a3f44;
+            border-radius: 5px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box .title {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .label {
+            color: #e0e0e0 !important;
+            /* Texto más claro */
+        }
+
+        .input,
+        .button {
+            background-color: #32383e !important;
+            border-color: #3a3f44 !important;
+            color: #ffffff !important;
+        }
+
+        .input:focus {
+            border-color: #4e5d6c !important;
+        }
+
+        .button.is-primary {
+            background-color: #4e5d6c !important;
+        }
+
+        .button.is-primary:hover {
+            background-color: #5f6b7a !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        <h2 class="title">Iniciar Sesión</h2>
+        <form>
+            <div class="field">
+                <label class="label">Usuario</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Usuario">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Contraseña</label>
+                <div class="control">
+                    <input class="input" type="password" placeholder="Contraseña">
+                </div>
+            </div>
+            <button class="button is-primary is-fullwidth">Entrar</button>
+        </form>
+    </div>
+</body>
+
+</html>

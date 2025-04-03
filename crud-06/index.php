@@ -38,9 +38,16 @@ $action = $_GET['action'] ?? 'login';
 
 // Verificar autenticación
 $usuarioModel = new Usuario();
-if (!$usuarioModel->estaAutenticado() && !($publicRoutes[$controller] ?? false && in_array($action, $publicRoutes[$controller]))) {
-    header('Location: index.php?controller=Auth&action=login');
-    exit;
+if (!$usuarioModel->estaAutenticado()) {
+    if (!($publicRoutes[$controller] ?? false && in_array($action, $publicRoutes[$controller]))) {
+        // Guardar la URL solicitada para redirigir después del login
+        $_SESSION['redirect_url'] = $_SERVER['QUERY_STRING'] 
+            ? 'index.php?' . $_SERVER['QUERY_STRING'] 
+            : 'index.php';
+            
+        header('Location: index.php?controller=Auth&action=login');
+        exit;
+    }
 }
 
 // Validar y crear instancia del controlador

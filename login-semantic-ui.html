@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Semantic UI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background-color: #272b30;
+            color: #c8c8c8;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            background-color: #32383e;
+            border: 1px solid #3a3f44;
+            border-radius: 5px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box .header {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .ui.form .field>label {
+            color: #e0e0e0 !important;
+            /* Texto más claro */
+        }
+
+        .ui.input>input,
+        .ui.form input {
+            background-color: #32383e !important;
+            border: 1px solid #3a3f44 !important;
+            color: #ffffff !important;
+        }
+
+        .ui.input>input:focus,
+        .ui.form input:focus {
+            border-color: #4e5d6c !important;
+        }
+
+        .ui.primary.button {
+            background-color: #4e5d6c !important;
+        }
+
+        .ui.primary.button:hover {
+            background-color: #5f6b7a !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        <h2 class="ui header">Iniciar Sesión</h2>
+        <form class="ui form">
+            <div class="field">
+                <label>Usuario</label>
+                <div class="ui input">
+                    <input type="text" placeholder="Usuario">
+                </div>
+            </div>
+            <div class="field">
+                <label>Contraseña</label>
+                <div class="ui input">
+                    <input type="password" placeholder="Contraseña">
+                </div>
+            </div>
+            <button class="ui primary button fluid">Entrar</button>
+        </form>
+    </div>
+</body>
+
+</html>
